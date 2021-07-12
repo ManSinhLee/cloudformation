@@ -1,0 +1,25 @@
+# create security group with ssh, http, https in vpc 
+# allow ssh, http, https traffic from anywhere (not secure with ssh)
+Resources:
+  PublicSecurityGroup: # name of security group resource
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: PublicSecurityGroup
+      GroupDescription: "Allow SSH, HTTP, HTTPS from anywhere"
+      VpcId: vpc-07f91f08713c8070d # input your vpc here
+      SecurityGroupIngress:
+      - IpProtocol: tcp 
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp 
+        FromPort: 443
+        ToPort: 443
+        CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+      - IpProtocol: "-1"
+        CidrIp: 0.0.0.0/0
