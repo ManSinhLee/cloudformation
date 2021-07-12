@@ -1,0 +1,8 @@
+# create ec2 instance in default vpc with instance type t2.micro, default security group and ami Amazon Linux 2
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  MyEC2Instance: # Your resource name may be anything you like but has to follow some aws's rule
+    Type: AWS::EC2::Instance 
+    Properties:
+      ImageId: ami-0dc2d3e4c0f9ebd18 # AMI ID may be changed or different in your current region
+      InstanceType: t2.small
